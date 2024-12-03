@@ -1,6 +1,11 @@
-import Task from './Task';
+import { useEffect } from "react";
+import Task from '@components/Task';
 
 const Status = ({ status, items }) => {
+
+    useEffect(() => {
+        console.log("Render Status");
+    }, []);
 
     return (
         <div className="col-12 col-md-3 mb-3">

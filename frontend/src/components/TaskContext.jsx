@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect, useRef } from "react";
 
-import { getItems } from "../services/ItemService.ts";
+import { getItems } from "@services/ItemService.ts";
 
 const TaskContext = createContext();
 
@@ -28,7 +28,7 @@ const TaskProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        console.log("Updated tasks:", tasks);
+        // console.log("Updated tasks:", tasks);
     }, [tasks]);
 
     const deleteItem = (id) => {
@@ -38,7 +38,6 @@ const TaskProvider = ({ children }) => {
     };
 
     const updateItem = (id, updatedItem) => {
-        console.log(updatedItem);
         setTasks(
             (prevList) => prevList.map(item => item.id === id ? updatedItem : item)
         );
@@ -48,13 +47,8 @@ const TaskProvider = ({ children }) => {
         if (!hasFetchedData.current) {
             hasFetchedData.current = true;
             getItems()
-            .then(data => {
-                console.log("Fetched data:", data);
-                setTasks(data);
-            })
-            .catch(e => {
-                console.error("Error fetching tasks:", e);
-            });
+            .then(data => setTasks(data))
+            .catch(e => console.error("Error fetching tasks:", e));
         }
     }, []);
 

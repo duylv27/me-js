@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useTask } from "../components/TaskContext.jsx";
+import React, { useEffect, useState } from "react";
+import { useTask } from "@components/TaskContext.jsx";
 
 const Task = ({ item }) => {
 
@@ -8,6 +8,14 @@ const Task = ({ item }) => {
     const [id, _] = useState(item.id);
     const [content, setContent] = useState(item.content);
     const [priority, setPriority] = useState(item.priority);
+
+    useEffect(() => {
+        console.log("Render Tasks");
+    }, []);
+
+    useEffect(() => {
+        // Hooks change on content and priority
+    }, [content, priority]);
 
     const removeTask = (id) => {
         deleteItem(id);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import Status from "./Status.jsx"
-import { useTask } from './TaskContext.jsx'
+import Status from "@components/Status.jsx"
+import { useTask } from '@components/TaskContext'
 
 const Board = () => {
 
@@ -12,15 +12,19 @@ const Board = () => {
     const [doneItems, setDoneItems] = useState([]);
 
     const countRef = useRef(0);
+    const hasFetchedData = useRef(false);
     const [count, setCount] = useState(0);  
 
     useEffect(() => {
         countRef.current = countRef.current + 1;
-        console.log("XXX")
+        console.log("Something render");
     });
 
     useEffect(() => {
-        console.log("###")
+        if (!hasFetchedData.current) {
+            hasFetchedData.current = true;
+            console.log("Component mounted");
+        }
     }, []);
 
     useEffect(() => {
@@ -55,7 +59,7 @@ const Board = () => {
 
     return (
         <div className="container mt-4">
-            <div>{countRef.current}</div>
+            <div>Number of renders: {countRef.current}</div>
             <div className="row">
                 <Status status={"To do"} items={todoItems} />
                 <Status status={"In progress"} items={inProgressItems} />
@@ -64,10 +68,10 @@ const Board = () => {
                 <Status status={"Backlog"} items={backLogItems} />
             </div>
             <button onClick={submit}>Submit</button>
-            <h1>{count}</h1>
+            {/* <h1>{count}</h1>
             <button onClick={increaseOne}>Increase</button>
             <button onClick={decreaseOne}>Decrease</button>
-            <button onClick={reset}>Reset</button>
+            <button onClick={reset}>Reset</button> */}
         </div>
     )
 }
