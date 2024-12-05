@@ -6,7 +6,7 @@
 ## What’s Inside?  
 - **PostgreSQL Database**: A robust and reliable data store for your API.
 - **Docker Compose**: Hassle-free setup and containerized environments.
-- **Python REST API**: Powered by frameworks and libraries to handle CRUD operations.
+- **Python REST API**: Powered by frameworks and libraries to handle CRUD operations with **Flask**.
 - **Dependencies Made Easy**: A simple way to get everything installed and running.
 
 ---
