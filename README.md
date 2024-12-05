@@ -1,6 +1,6 @@
 # 🐍 Me with Python: A Cool Pet Project!  
 
-🚀 **Pet Project**: Building a blazing-fast REST API with full CRUD functionality. This project is a playground for experimenting with Python, databases, and Docker, while keeping things clean, structured, and fun. Whether you're here to learn, code, or just tinker, you're in the right place!  
+🚀 **Pet Project**: Building a blazing-fast REST API with full CRUD functionality with Flask. This project is a playground for experimenting with Python, databases, and Docker, while keeping things clean, structured, and fun. Whether you're here to learn, code, or just tinker, you're in the right place!  
 
 ----
 ## What’s Inside?  
