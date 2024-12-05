@@ -1,4 +1,6 @@
 from flask import request, Blueprint
+from sqlalchemy import Integer
+
 from backend.model.models import User, database as db
 
 user_bp = Blueprint('users', __name__)
@@ -26,7 +28,7 @@ def post():
 
 # update
 @user_bp.route('/users', methods=['PUT'])
-def put(user_id):
+def put(user_id: Integer):
     user = User.query.get(user_id)
     if not user:
         return {'error': 'User not found'}, 404
@@ -43,7 +45,7 @@ def put(user_id):
 
 # delete
 @user_bp.route('/users', methods=['DELETE'])
-def delete(user_id):
+def delete(user_id: Integer):
     user = User.query.get(user_id)
     if not user:
         return {'error': 'User not found'}, 404
