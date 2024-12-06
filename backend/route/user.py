@@ -11,7 +11,6 @@ def get():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}, 200
 
-
 # create
 @user_bp.route('/users', methods=['POST'])
 def post():

@@ -9,7 +9,7 @@ console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 
 # Create file handler and set level to warning
-file_handler = logging.FileHandler('app.log')
+file_handler = logging.FileHandler('../app.log')
 file_handler.setLevel(logging.WARNING)
 
 # Create formatter and add it to handlers

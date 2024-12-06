@@ -1,8 +1,9 @@
 from typing import List, Optional, Any, Dict
 
 from sqlalchemy import Integer
+from sqlalchemy.exc import NoResultFound
 
-from backend.logger import logger
+from backend.util.logger import logger
 from backend.model.models import Item
 from backend.model.models import database as db
 from backend.model.schemas import item_schema
@@ -21,7 +22,7 @@ def create(item_data: Any) -> Dict[str, Any]:
         db.session.commit()
         db.session.refresh(item)
         return item.to_dict()
-    except ValueError as e:
+    except Exception as e:
         db.session.rollback()
         logger.error(f"Database error: {e}")
         raise e
@@ -35,7 +36,7 @@ def update(item_id: Integer, item_data: Any) -> Dict[str, Any]:
             setattr(item, key, value)
         db.session.commit()
         return item.to_dict()
-    except ValueError as e:
+    except Exception as e:
         db.session.rollback()
         logger.error(f"Database error: {e}")
         raise e
@@ -52,7 +53,7 @@ def delete(item_id: Integer):
 def get_by_id(item_id):
     item = Item.query.get(item_id)
     if not item:
-        raise ValueError("Item not found")
+        raise NoResultFound("Item not found")
     return item
 
 
